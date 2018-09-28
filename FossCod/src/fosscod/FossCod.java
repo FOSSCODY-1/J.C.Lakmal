@@ -19,15 +19,17 @@ public class FossCod {
      */
     public static void main(String[] args) throws FileNotFoundException {
         int op;
-        Scanner s = new Scanner(System.in);
+        Scanner s = new Scanner(System.in);//scanner class ,it use to get the all the user inputs
         do {
             System.out.println("Enter 1 to given the graph as a Adjacency Matrix ");
             System.out.println("Enter 2 to given the graph as a weighted graph");
-            System.out.println("Enter 3 to get the graph as a file for Undirected Graph");
-            System.out.println("Enter 4 to get the graph as a file for directed Graph");
-            System.out.println("Enter 5 to Exit");
+            System.out.println("Enter 3 to given the graph as a nonweighted graph & Traversal");
+            System.out.println("Enter 4 to get the graph as a file for Undirected Graph");
+            System.out.println("Enter 5 to get the graph as a file for directed Graph");
+            System.out.println("Enter 6 to Exit");
             System.out.print("Enter your choise :");
             op = s.nextInt();
+            //calling the classes through the objects using switch statement
             switch (op) {
                 case 1:
                     System.out.println("-------adjacency matrix--------");
@@ -59,8 +61,8 @@ public class FossCod {
                         choise = s.nextInt();
                         switch (choise) {
                             case 1:
-                                RepresentTheAdjacencyList m = new RepresentTheAdjacencyList();
-                                m.list(size, array);
+                                RepresentTheAdjacencyList m = new RepresentTheAdjacencyList();//create  the object
+                                m.list(size, array);//calling the method
                                 break;
                             case 2:
                                 RepresentTheAdjacencyList l = new RepresentTheAdjacencyList();
@@ -91,32 +93,61 @@ public class FossCod {
                     } while (choise != 5);
                     break;
                 case 2:
-                    fosscod.Graph g = new fosscod.Graph(10);
-                    g.addEdge(0, 2, 10);
-                    g.addEdge(0, 5, 15);
-                    System.out.println(g);
+                    System.out.print("Enter your num of nodes :");
+                    int node=s.nextInt();
+                    fosscod.Graph g = new fosscod.Graph(node);
+                    String con="y";
+                    while(con=="y") //we  can enter any number of edges to the graph. if we enter "n" then it is stop
+                    {
+                        //get the inputs
+                        System.out.print("Enter your node :");                        
+                        int no=s.nextInt();                       
+                        System.out.print("Enter your Adjacent node :");
+                        int adj=s.nextInt();
+                        System.out.print("Enter your Edge weight :");
+                        int weight=s.nextInt();
+                        System.out.print("Do you want to continue y|n :");//Enter yes or no
+                        con=s.next();
+                        g.addEdge(no,adj,weight);    
+                    }
+                    System.out.println("Your graph is ");
+                    System.out.println(g);//print the graph
                     break;
                 case 3:
-                    System.out.print("Enter graph input file name: ");
-                    String file=s.next();
-                    readFile.Graph m=new readFile.Graph(file);
-                    m.print();
+                     Traversal k = new Traversal(4); 
+  
+                     k.addEdge(0, 1); 
+                     k.addEdge(0, 2); 
+                     k.addEdge(1, 2); 
+                     k.addEdge(2, 0); 
+                     k.addEdge(2, 3); 
+                     k.addEdge(3, 3); 
+  
+                    System.out.println("Following is Breadth First Traversal "+ 
+                           "(starting from vertex 2)"); 
+  
+                     k.BFS(2); 
+                    
+                    break;   
+                 
+                case 4:
+                    
                     break;
                     
-                case 4:
+                case 5:
                     System.out.print("Enter graph input file name: ");
-                    String file1=s.next();
+                    String file1=s.next();//we must enter valid file name with extention
                     readFile.DirectGraph m1=new readFile.DirectGraph(file1);
                     m1.print();
                     break;
-                case 5:
+                case 6:
                     System.exit(0);
                     break;
                     
                 default:
                     System.out.println("Invalid input ");
             }
-        } while (op != 5);
+        } while (op != 6);
 
     }
 
