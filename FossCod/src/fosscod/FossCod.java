@@ -114,21 +114,60 @@ public class FossCod {
                     System.out.println(g);//print the graph
                     break;
                 case 3:
-                     Traversal k = new Traversal(4); 
+                    System.out.print("Enter your num of nodes :");
+                    int node1=s.nextInt();
+                    Traversal k = new Traversal(node1); 
+                    String con1="y";
+                    while(con1=="y") //we  can enter any number of edges to the graph. if we enter "n" then it is stop
+                    {
+                        //get the inputs
+                        System.out.print("Enter your node :");                        
+                        int no=s.nextInt();                       
+                        System.out.print("Enter your Adjacent node :");
+                        int adj=s.nextInt();
+                        System.out.print("Do you want to continue y|n :");//Enter yes or no
+                        con1=s.next();
+                        k.addEdge(no,adj);    
+                    }
+                    int choise1 = 0;
+                    do {
+                        System.out.println("");
+                        System.out.println("*********MENU***********");
+                        System.out.println("Enter 1 Depth First Traversal ");
+                        System.out.println("Enter 2 Breadth  First Traversal ");
+                        System.out.println("Enter 3 to exit ");
+                        System.out.print("Enter your choise :");
+                        choise = s.nextInt();
+                        int start=0;
+                        switch (choise) {
+                            case 1:
+                                System.out.println("Enter your starting node :");
+                                start=s.nextInt();
+                                System.out.println("Following is Breadth First Traversal "+ 
+                           "(starting from vertex )"+start); 
   
-                     k.addEdge(0, 1); 
-                     k.addEdge(0, 2); 
-                     k.addEdge(1, 2); 
-                     k.addEdge(2, 0); 
-                     k.addEdge(2, 3); 
-                     k.addEdge(3, 3); 
+                               k.DFS(start);
+                                break;
+                            case 2:
+                                 System.out.println("Enter your starting node :");
+                                start=s.nextInt();
+                                System.out.println("Following is Breadth First Traversal "+ 
+                           "(starting from vertex )"+start); 
   
-                    System.out.println("Following is Breadth First Traversal "+ 
-                           "(starting from vertex 2)"); 
-  
-                     k.BFS(2); 
+                               k.BFS(start);
+                                break;
+                           
+                            case 3:
+                               System.exit(0);
+                                break;
+                            
+                            default:
+                                System.out.println("Invalid input ");
+                        }
+
+                    } while (choise1 != 3);
                     
-                    break;   
+                    break;      
                  
                 case 4:
                     
