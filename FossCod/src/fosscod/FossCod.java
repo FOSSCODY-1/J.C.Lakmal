@@ -97,7 +97,7 @@ public class FossCod {
                     int node=s.nextInt();
                     fosscod.Graph g = new fosscod.Graph(node);
                     String con="y";
-                    while(con=="y") //we  can enter any number of edges to the graph. if we enter "n" then it is stop
+                    while(con.equals("y")) //we  can enter any number of edges to the graph. if we enter "n" then it is stop
                     {
                         //get the inputs
                         System.out.print("Enter your node :");                        
@@ -108,6 +108,7 @@ public class FossCod {
                         int weight=s.nextInt();
                         System.out.print("Do you want to continue y|n :");//Enter yes or no
                         con=s.next();
+                        
                         g.addEdge(no,adj,weight);    
                     }
                     System.out.println("Your graph is ");
@@ -118,7 +119,7 @@ public class FossCod {
                     int node1=s.nextInt();
                     Traversal k = new Traversal(node1); 
                     String con1="y";
-                    while(con1=="y") //we  can enter any number of edges to the graph. if we enter "n" then it is stop
+                    while(con1.equals("y")) //we  can enter any number of edges to the graph. if we enter "n" then it is stop
                     {
                         //get the inputs
                         System.out.print("Enter your node :");                        
@@ -170,7 +171,10 @@ public class FossCod {
                     break;      
                  
                 case 4:
-                    
+                    System.out.print("Enter graph input file name: ");
+                    String file=s.next();//we must enter valid file name with extention
+                    readFile.Graph m=new readFile.Graph(file);
+                    m.print();
                     break;
                     
                 case 5:
